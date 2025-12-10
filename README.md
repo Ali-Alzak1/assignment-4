@@ -237,8 +237,8 @@ State is automatically restored on page refresh, providing a seamless user exper
 To display your own GitHub repositories:
 
 1. Open `js/script.js`
-2. Find the line: `const username = 'octocat';` (around line 327)
-3. Replace `'octocat'` with your GitHub username:
+2. Find the line: `const username = 'Ali-Alzak1';` (around line 333)
+3. Replace `'Ali-Alzak1'` with your GitHub username if needed:
    ```javascript
    const username = 'your-github-username';
    ```

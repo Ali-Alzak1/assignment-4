@@ -1,5 +1,5 @@
 // =========================================================
-// Ali Alzaki — Portfolio (Assignment 3)
+// Ali Alzaki — Portfolio (Assignment 4)
 // Advanced Functionality with API Integration
 // State Management, Complex Logic, Performance Optimization
 // =========================================================
@@ -329,29 +329,56 @@
     if (errorContainer) errorContainer.hidden = true;
 
     try {
-      // Replace with your GitHub username
-      const username = 'octocat'; // Change this to your GitHub username
+      const username = 'Ali-Alzak1';
+      
+      // Curated list of repositories with proper display names
+      const curatedRepos = [
+        { repo: 'assignment-1', name: 'My First Portfolio', description: 'Initial portfolio website built with HTML, CSS, and JavaScript' },
+        { repo: 'assignment-2', name: 'Interactive Portfolio', description: 'Enhanced portfolio with interactive features, dark mode, and project filtering' },
+        { repo: 'assignment-3', name: 'Advanced Portfolio', description: 'Portfolio with API integrations, complex logic, and state management' },
+        { repo: 'assignment-4', name: 'Final Portfolio', description: 'Complete, production-ready portfolio web application' },
+        { repo: 'SWE_WebDevelopment', name: 'SWE 363 Project', description: 'Web development course project showcasing full-stack capabilities' }
+      ];
+
+      // Fetch all repos to get metadata
       const response = await fetch(
-        `https://api.github.com/users/${username}/repos?sort=updated&per_page=6&type=all`
+        `https://api.github.com/users/${username}/repos?sort=updated&per_page=100&type=all`
       );
 
       if (!response.ok) {
         throw new Error(`GitHub API error: ${response.status}`);
       }
       
-      const repos = await response.json();
+      const allRepos = await response.json();
       
-      if (!Array.isArray(repos) || repos.length === 0) {
+      if (!Array.isArray(allRepos) || allRepos.length === 0) {
         throw new Error('No repositories found');
       }
 
-      reposContainer.innerHTML = repos.map(repo => `
+      // Match curated repos with fetched data
+      const displayRepos = curatedRepos.map(curated => {
+        const repo = allRepos.find(r => r.name === curated.repo);
+        if (repo) {
+          return {
+            ...repo,
+            displayName: curated.name,
+            displayDescription: curated.description || repo.description || 'No description available.'
+          };
+        }
+        return null;
+      }).filter(Boolean);
+
+      if (displayRepos.length === 0) {
+        throw new Error('No curated repositories found');
+      }
+
+      reposContainer.innerHTML = displayRepos.map(repo => `
         <a href="${escapeHtml(repo.html_url)}" target="_blank" rel="noopener" class="github-card">
           <div class="github-card-header">
-            <h3 class="github-card-title">${escapeHtml(repo.name)}</h3>
+            <h3 class="github-card-title">${escapeHtml(repo.displayName)}</h3>
             ${repo.language ? `<span class="github-card-lang">${escapeHtml(repo.language)}</span>` : ''}
           </div>
-          <p class="github-card-desc">${escapeHtml(repo.description || 'No description available.')}</p>
+          <p class="github-card-desc">${escapeHtml(repo.displayDescription)}</p>
           <div class="github-card-meta">
             <span>⭐ ${repo.stargazers_count || 0}</span>
             <span>🍴 ${repo.forks_count || 0}</span>

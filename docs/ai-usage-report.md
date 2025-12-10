@@ -19,11 +19,11 @@ This document provides a comprehensive record of all AI tools and services used 
 
 ### 2.1 Project Setup and Structure (Cursor)
 
-**Task**: Create assignment-4 repository structure based on assignment-3
+**Task**: Create assignment-4 repository structure based on previous assignments
 
 **AI Assistance**:
 - Asked Cursor to help create the directory structure for assignment-4
-- Requested copying files from assignment-3 to assignment-4
+- Requested copying files from previous assignments to assignment-4
 - Used PowerShell commands suggested by Cursor to set up folders
 
 **My Modifications**:
@@ -221,7 +221,7 @@ This document provides a comprehensive record of all AI tools and services used 
 ### 5.1 Cursor Interactions
 
 **Example 1: Project Structure Setup**
-- **My Prompt**: "Help me create the assignment-4 directory structure and copy files from assignment-3"
+- **My Prompt**: "Help me create the assignment-4 directory structure and copy files from previous assignments"
 - **AI Response**: Suggested PowerShell commands for directory creation and file copying
 - **My Action**: Modified commands for Windows PowerShell, verified file copying
 - **Result**: Successfully created assignment-4 structure with all files
