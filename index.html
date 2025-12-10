@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="system">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Ali Alzaki — Software Engineering Student | Game Dev & Web Developer Portfolio" />
+  <title>Ali Alzaki • Portfolio</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Scroll Progress -->
+  <div id="scroll-progress" aria-hidden="true"></div>
+
+  <!-- Toast Container -->
+  <div id="toast-container" class="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <div class="navbar-inner">
+        <a href="#home" class="logo">Ali Alzaki</a>
+        
+        <div class="nav-links" id="nav-links">
+          <a href="#home" class="nav-link">Home</a>
+          <a href="#about" class="nav-link">About</a>
+          <a href="#projects" class="nav-link">Projects</a>
+          <a href="#skills" class="nav-link">Skills</a>
+          <a href="#github" class="nav-link">GitHub</a>
+          <a href="#contact" class="nav-link">Contact</a>
+        </div>
+
+        <div class="navbar-controls">
+          <!-- Theme Toggle -->
+          <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle theme">
+            <span class="theme-icon">🌙</span>
+          </button>
+
+          <!-- Mobile Menu Toggle -->
+          <button id="mobile-menu-toggle" class="mobile-menu-toggle" type="button" aria-label="Toggle menu">
+            <span class="menu-icon">☰</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main">
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="hero-background"></div>
+      <div class="container">
+        <div class="hero-content">
+          <!-- Personalized Greeting -->
+          <div class="greeting-section" id="greeting-section">
+            <p class="greeting-text" id="greeting-text">Hi, I'm</p>
+            <button id="personalize-btn" class="personalize-btn" type="button">Personalize</button>
+          </div>
+
+          <h1 class="hero-title">
+            <span class="gradient-text">Ali Alzaki</span>
+          </h1>
+          
+          <p class="hero-subtitle">Software Engineering Student • Game Dev & Web Developer</p>
+          
+          <p class="hero-description">
+            I craft beautiful, performant web applications and engaging game experiences. 
+            Passionate about clean code, user experience, and continuous learning.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#projects" class="btn btn-primary">View My Work</a>
+            <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+          </div>
+
+          <div class="hero-social">
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+              </svg>
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+              </svg>
+            </a>
+            <a href="mailto:hello@example.com" class="social-link" aria-label="Email">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+            </a>
+          </div>
+
+          <a href="#about" class="scroll-indicator" aria-label="Scroll to about">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">About Me</h2>
+          <button class="toggle-section-btn" data-section="about-content" type="button" aria-expanded="true">
+            Hide Section
+          </button>
+        </div>
+        
+        <div id="about-content" class="about-content">
+          <div class="about-grid">
+            <div class="about-text">
+              <figure class="about-photo-wrapper">
+                <img src="assets/images/my photo.jpg" alt="Ali Alzaki" class="about-photo" loading="lazy" />
+              </figure>
+              <div class="about-text-content">
+                <p>
+                  I am a junior software engineering student at KFUPM, passionate about game development 
+                  and interested in web development. Building projects—even small ones—is the key to learning.
+                </p>
+                <p>
+                  I specialize in creating interactive web applications and game prototypes. When I'm not coding, 
+                  you'll find me exploring new technologies, contributing to projects, or working on UI/UX designs.
+                </p>
+                <p>
+                  I believe great software comes from understanding both the technical requirements and the 
+                  human needs behind them. Every project is an opportunity to make someone's life a little easier.
+                </p>
+              </div>
+            </div>
+
+            <div class="about-highlights">
+              <div class="highlight-card">
+                <div class="highlight-icon">💻</div>
+                <h3>Clean Code</h3>
+                <p>Writing maintainable, well-documented code that scales.</p>
+              </div>
+              <div class="highlight-card">
+                <div class="highlight-icon">🎨</div>
+                <h3>UI/UX Design</h3>
+                <p>Creating intuitive interfaces with attention to detail.</p>
+              </div>
+              <div class="highlight-card">
+                <div class="highlight-icon">🚀</div>
+                <h3>Performance</h3>
+                <p>Optimizing applications for speed and efficiency.</p>
+              </div>
+              <div class="highlight-card">
+                <div class="highlight-icon">🤝</div>
+                <h3>Collaboration</h3>
+                <p>Working effectively in agile team environments.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section projects-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">My Projects</h2>
+          <button class="toggle-section-btn" data-section="projects-content" type="button" aria-expanded="true">
+            Hide Section
+          </button>
+        </div>
+
+        <div id="projects-content">
+          <!-- Filter Controls -->
+          <div class="projects-toolbar">
+            <div class="toolbar-row">
+              <div class="search-wrapper">
+                <input type="search" id="project-search" class="search-input" placeholder="Search projects..." />
+              </div>
+
+              <div class="filters-group">
+                <button class="filter-btn is-active" data-filter="all" type="button">All</button>
+                <button class="filter-btn" data-filter="web" type="button">Web</button>
+                <button class="filter-btn" data-filter="game" type="button">Game</button>
+                <button class="filter-btn" data-filter="uiux" type="button">UI/UX</button>
+              </div>
+
+              <div class="sort-wrapper">
+                <label for="project-sort" class="visually-hidden">Sort projects</label>
+                <select id="project-sort" class="sort-select">
+                  <option value="newest">Newest First</option>
+                  <option value="oldest">Oldest First</option>
+                  <option value="az">A-Z</option>
+                  <option value="za">Z-A</option>
+                </select>
+              </div>
+
+              <div class="difficulty-wrapper">
+                <label for="difficulty-filter" class="visually-hidden">Filter by difficulty</label>
+                <select id="difficulty-filter" class="difficulty-select">
+                  <option value="all">All Levels</option>
+                  <option value="beginner">Beginner</option>
+                  <option value="intermediate">Intermediate</option>
+                  <option value="advanced">Advanced</option>
+                </select>
+              </div>
+            </div>
+            <p id="results-count" class="results-count">Loading...</p>
+          </div>
+
+          <!-- Projects Grid -->
+          <div id="project-grid" class="projects-grid">
+            <!-- Project 1: Evaluation Hub -->
+            <article class="project-card" 
+                     data-title="Evaluation Hub" 
+                     data-tags="web,uiux" 
+                     data-date="2025-03-01" 
+                     data-difficulty="intermediate"
+                     data-category="web">
+              <div class="project-image-wrapper">
+                <img src="assets/images/evaluation hub project.jpg" alt="Evaluation Hub" class="project-image" loading="lazy" />
+              </div>
+              <div class="project-content">
+                <div class="project-header">
+                  <h3 class="project-title">Evaluation Hub</h3>
+                  <span class="difficulty-badge difficulty-intermediate">Intermediate</span>
+                </div>
+                <p class="project-description">
+                  Students evaluate instructors monthly with simple, interactive flows to improve teaching quality.
+                </p>
+                <div class="project-tags">
+                  <span class="tech-tag">React</span>
+                  <span class="tech-tag">UI/UX</span>
+                  <span class="tech-tag">Web</span>
+                </div>
+                <div class="project-links">
+                  <a href="https://www.figma.com/design/e7590jddXaMW7LUXvPNr5y/Instructor-Rating-App?node-id=0-1&p=f&t=EkXtbk1I00IdTlIe-0" 
+                     target="_blank" rel="noopener" class="project-link">
+                    View Figma →
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Project 2: Student Impact Hub -->
+            <article class="project-card" 
+                     data-title="Student Impact Hub" 
+                     data-tags="web,uiux,community" 
+                     data-date="2025-02-10" 
+                     data-difficulty="advanced"
+                     data-category="web">
+              <div class="project-image-wrapper">
+                <img src="assets/images/student impact hub project.jpg" alt="Student Impact Hub" class="project-image" loading="lazy" />
+              </div>
+              <div class="project-content">
+                <div class="project-header">
+                  <h3 class="project-title">Student Impact Hub</h3>
+                  <span class="difficulty-badge difficulty-advanced">Advanced</span>
+                </div>
+                <p class="project-description">
+                  Activities and events in one place to encourage and simplify student involvement.
+                </p>
+                <div class="project-tags">
+                  <span class="tech-tag">Web</span>
+                  <span class="tech-tag">Community</span>
+                  <span class="tech-tag">UI/UX</span>
+                </div>
+                <div class="project-links">
+                <a href="SWE216 Project" download="SWE 216 Project.pdf" type="application/pdf" class="project-link">
+                    Download PDF →
+                  </a>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div id="empty-state" class="empty-state" hidden>
+            <p>No projects found. Try adjusting your filters or search term.</p>
+            <button class="btn btn-secondary" id="clear-filters" type="button">Clear Filters</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section skills-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Skills & Expertise</h2>
+          <button class="toggle-section-btn" data-section="skills-content" type="button" aria-expanded="true">
+            Hide Section
+          </button>
+        </div>
+
+        <div id="skills-content" class="skills-content">
+          <p class="skills-intro">Technologies and competencies I've developed over the years</p>
+
+          <div class="skills-categories">
+            <button class="skill-category-btn is-active" data-category="all">All Skills</button>
+            <button class="skill-category-btn" data-category="frontend">Frontend</button>
+            <button class="skill-category-btn" data-category="backend">Backend</button>
+            <button class="skill-category-btn" data-category="tools">Tools</button>
+            <button class="skill-category-btn" data-category="soft">Soft Skills</button>
+          </div>
+
+          <div id="skills-grid" class="skills-grid">
+            <!-- Skills will be populated by JavaScript -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GitHub Section -->
+    <section id="github" class="section github-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">GitHub Repositories</h2>
+          <button class="toggle-section-btn" data-section="github-content" type="button" aria-expanded="true">
+            Hide Section
+          </button>
+        </div>
+
+        <div id="github-content" class="github-content">
+          <p class="github-description">My latest open source projects and contributions</p>
+          
+          <div id="github-repos" class="github-grid">
+            <!-- Loading skeletons -->
+            <div class="skeleton-card">
+              <div class="skeleton skeleton-title"></div>
+              <div class="skeleton skeleton-line"></div>
+              <div class="skeleton skeleton-line"></div>
+            </div>
+            <div class="skeleton-card">
+              <div class="skeleton skeleton-title"></div>
+              <div class="skeleton skeleton-line"></div>
+              <div class="skeleton skeleton-line"></div>
+            </div>
+            <div class="skeleton-card">
+              <div class="skeleton skeleton-title"></div>
+              <div class="skeleton skeleton-line"></div>
+              <div class="skeleton skeleton-line"></div>
+            </div>
+          </div>
+
+          <div id="github-error" class="github-error" hidden>
+            <p>Unable to load repositories. Please try again later.</p>
+            <button id="retry-github" class="btn btn-secondary" type="button">Retry</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Get In Touch</h2>
+          <button class="toggle-section-btn" data-section="contact-content" type="button" aria-expanded="true">
+            Hide Section
+          </button>
+        </div>
+
+        <div id="contact-content" class="contact-content">
+          <p class="contact-intro">Have a project in mind? Let's work together to bring your ideas to life.</p>
+
+          <div class="contact-layout">
+            <form id="contact-form" class="contact-form" novalidate>
+              <div id="form-status" class="form-status" role="status" aria-live="polite"></div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="name">Name <span class="required">*</span></label>
+                  <input type="text" id="name" name="name" class="form-input" placeholder="Your name" required minlength="2" maxlength="50" />
+                  <small class="error-message" data-error-for="name" hidden>Name must be 2-50 characters.</small>
+                </div>
+
+                <div class="form-group">
+                  <label for="email">Email <span class="required">*</span></label>
+                  <input type="email" id="email" name="email" class="form-input" placeholder="you@example.com" required />
+                  <small class="error-message" data-error-for="email" hidden>Please enter a valid email address.</small>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="subject">Subject <span class="required">*</span></label>
+                <input type="text" id="subject" name="subject" class="form-input" placeholder="Project Inquiry" required minlength="5" maxlength="100" />
+                <small class="error-message" data-error-for="subject" hidden>Subject must be 5-100 characters.</small>
+              </div>
+
+              <div class="form-group">
+                <label for="message">Message <span class="required">*</span></label>
+                <textarea id="message" name="message" class="form-textarea" rows="5" placeholder="Tell me about your project..." required minlength="20" maxlength="1000"></textarea>
+                <div class="textarea-footer">
+                  <small class="error-message" data-error-for="message" hidden>Message must be 20-1000 characters.</small>
+                  <small class="char-count"><span id="char-count">0</span>/1000</small>
+                </div>
+              </div>
+
+              <button type="submit" id="submit-btn" class="btn btn-primary btn-submit">
+                <span class="btn-text">Send Message</span>
+                <span class="btn-spinner" aria-hidden="true"></span>
+              </button>
+            </form>
+
+            <div class="contact-widgets">
+              <!-- Weather Widget -->
+              <div id="weather-widget" class="widget weather-widget">
+                <div class="widget-header">
+                  <span class="widget-icon">🌤</span>
+                  <h3>Weather</h3>
+                </div>
+                <div class="weather-content">
+                  <div class="skeleton skeleton-line"></div>
+                  <div class="skeleton skeleton-line"></div>
+                </div>
+              </div>
+
+              <!-- Quote Widget -->
+              <div id="quote-widget" class="widget quote-widget">
+                <div class="widget-header">
+                  <span class="widget-icon">💭</span>
+                  <h3>Inspiration</h3>
+                  <button id="refresh-quote" class="refresh-btn" type="button" aria-label="Get new quote">↻</button>
+                </div>
+                <div class="quote-content">
+                  <p class="quote-text skeleton">Loading inspiration...</p>
+                  <p class="quote-author skeleton-line"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-left">
+          <a href="#home" class="footer-logo">Ali Alzaki</a>
+          <p class="footer-copyright">&copy; <span id="year"></span> All rights reserved.</p>
+        </div>
+        <div class="footer-social">
+          <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="GitHub">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+            </svg>
+          </a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="LinkedIn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+            </svg>
+          </a>
+        </div>
+        <p class="footer-made">Made with ❤️ and lots of coffee</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button id="back-to-top" class="back-to-top" type="button" aria-label="Back to top" hidden>
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </button>
+
+  <script src="js/script.js" defer></script>
+</body>
+</html>
