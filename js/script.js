@@ -7,9 +7,15 @@
 (function() {
   'use strict';
 
+  // Test that script is loading
+  console.log('✅ script.js loaded successfully');
+
   // ========== Utility Functions ==========
   const $ = (selector, context = document) => context.querySelector(selector);
   const $$ = (selector, context = document) => Array.from(context.querySelectorAll(selector));
+  
+  // Test utility functions
+  console.log('✅ Utility functions defined');
 
   // Debounce function for performance
   function debounce(func, wait = 300) {
@@ -488,6 +494,10 @@
 
   // ========== Projects Filtering & Sorting ==========
   function initProjectsFiltering() {
+    console.log('🔍 Initializing project filtering...');
+    
+    // Try to find elements - they might be in a hidden section, but that's OK
+    const projectsContent = $('#projects-content');
     const searchInput = $('#project-search');
     const filterBtns = $$('.filter-btn');
     const sortSelect = $('#project-sort');
@@ -497,15 +507,34 @@
     const emptyState = $('#empty-state');
     const clearFiltersBtn = $('#clear-filters');
 
+    console.log('📋 Elements found:', {
+      projectsContent: !!projectsContent,
+      projectsContentHidden: projectsContent ? projectsContent.hidden : 'N/A',
+      searchInput: !!searchInput,
+      filterBtns: filterBtns.length,
+      sortSelect: !!sortSelect,
+      difficultySelect: !!difficultySelect,
+      projectGrid: !!projectGrid,
+      resultsCount: !!resultsCount,
+      emptyState: !!emptyState
+    });
+
     if (!projectGrid) {
-      console.warn('Project grid not found, filtering will not work');
+      console.error('❌ Project grid not found! Make sure #project-grid exists in HTML.');
+      if (resultsCount) {
+        resultsCount.textContent = 'Error: Project grid not found';
+      }
       return;
     }
 
     const projectCards = $$('.project-card', projectGrid);
+    console.log('📦 Project cards found:', projectCards.length);
     
     if (projectCards.length === 0) {
-      console.warn('No project cards found, filtering will not work');
+      console.error('❌ No project cards found! Make sure .project-card elements exist.');
+      if (resultsCount) {
+        resultsCount.textContent = 'Error: No projects found';
+      }
       return;
     }
 
@@ -535,6 +564,7 @@
     if (difficultySelect) difficultySelect.value = state.difficulty;
 
     function applyFilters() {
+      console.log('Applying filters...', state);
       const searchTerm = state.search.trim().toLowerCase();
       const filterTag = state.filter;
       const difficulty = state.difficulty;
@@ -551,6 +581,8 @@
 
         return matchesSearch && matchesFilter && matchesDifficulty;
       });
+      
+      console.log('Filtered projects:', filtered.length, 'out of', projects.length);
 
       // Sort
       filtered.sort((a, b) => {
@@ -568,34 +600,61 @@
         }
       });
 
-      // Update DOM - hide all first, then show filtered
+      // Update DOM - hide all first, then show filtered and reorder
+      // First, hide ALL projects
       projects.forEach(project => {
         project.element.hidden = true;
+        project.element.style.display = 'none';
       });
       
-      filtered.forEach(project => {
-        project.element.hidden = false;
-      });
+      // If we have filtered results, show them in sorted order
+      if (filtered.length > 0 && projectGrid) {
+        // Remove all children from grid
+        while (projectGrid.firstChild) {
+          projectGrid.removeChild(projectGrid.firstChild);
+        }
+        
+        // Append filtered projects in sorted order
+        filtered.forEach(project => {
+          project.element.hidden = false;
+          project.element.style.display = '';
+          projectGrid.appendChild(project.element);
+        });
+      } else if (filtered.length === 0) {
+        // No results - all should be hidden (already done above)
+        console.log('No projects match the current filters');
+      }
 
       // Update count
       const count = filtered.length;
       if (resultsCount) {
         resultsCount.textContent = `Showing ${count} of ${projects.length} project${projects.length !== 1 ? 's' : ''}`;
+        console.log('Results count updated:', resultsCount.textContent);
+      } else {
+        console.error('Results count element not found');
       }
       if (emptyState) {
         emptyState.hidden = count > 0;
       }
+      console.log('Filters applied. Showing', count, 'projects out of', projects.length);
+      console.log('Filtered project titles:', filtered.map(p => p.element.dataset.title));
     }
 
     // Event listeners
-    searchInput?.addEventListener('input', debounce((e) => {
-      state.search = e.target.value;
-      localStorage.setItem(STORAGE_KEYS.projectSearch, state.search);
-      applyFilters();
-    }, 300));
+    if (searchInput) {
+      searchInput.addEventListener('input', debounce((e) => {
+        console.log('Search input changed:', e.target.value);
+        state.search = e.target.value;
+        localStorage.setItem(STORAGE_KEYS.projectSearch, state.search);
+        applyFilters();
+      }, 300));
+    } else {
+      console.error('Search input not found');
+    }
 
     filterBtns.forEach(btn => {
       btn.addEventListener('click', () => {
+        console.log('Filter button clicked:', btn.dataset.filter);
         filterBtns.forEach(b => b.classList.remove('is-active'));
         btn.classList.add('is-active');
         state.filter = btn.dataset.filter || 'all';
@@ -603,18 +662,32 @@
         applyFilters();
       });
     });
+    
+    if (filterBtns.length === 0) {
+      console.error('No filter buttons found');
+    }
 
-    sortSelect?.addEventListener('change', (e) => {
-      state.sort = e.target.value;
-      localStorage.setItem(STORAGE_KEYS.projectSort, state.sort);
-      applyFilters();
-    });
+    if (sortSelect) {
+      sortSelect.addEventListener('change', (e) => {
+        console.log('Sort changed:', e.target.value);
+        state.sort = e.target.value;
+        localStorage.setItem(STORAGE_KEYS.projectSort, state.sort);
+        applyFilters();
+      });
+    } else {
+      console.error('Sort select not found');
+    }
 
-    difficultySelect?.addEventListener('change', (e) => {
-      state.difficulty = e.target.value;
-      localStorage.setItem(STORAGE_KEYS.projectDifficulty, state.difficulty);
-      applyFilters();
-    });
+    if (difficultySelect) {
+      difficultySelect.addEventListener('change', (e) => {
+        console.log('Difficulty filter changed:', e.target.value);
+        state.difficulty = e.target.value;
+        localStorage.setItem(STORAGE_KEYS.projectDifficulty, state.difficulty);
+        applyFilters();
+      });
+    } else {
+      console.error('Difficulty select not found');
+    }
 
     clearFiltersBtn?.addEventListener('click', () => {
       state.search = '';
@@ -637,7 +710,10 @@
       applyFilters();
     });
 
+    // Initial filter application
     applyFilters();
+    console.log('✅ Project filtering initialized successfully!');
+    console.log('🎯 You can now use search, filters, sorting, and difficulty filtering');
   }
 
   // ========== Skills Management ==========
@@ -844,6 +920,8 @@
 
   // ========== Initialize Everything ==========
   function init() {
+    console.log('🚀 Portfolio initialization started');
+    
     // Set current year
     const yearEl = $('#year');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
@@ -855,10 +933,13 @@
     initNavigation();
     initBackToTop();
     initSectionToggles();
-    // Initialize projects filtering after a small delay to ensure DOM is ready
-    setTimeout(() => {
+    
+    // Initialize projects filtering - ensure it runs after section toggles
+    // Use requestAnimationFrame to ensure DOM is ready
+    requestAnimationFrame(() => {
       initProjectsFiltering();
-    }, 100);
+    });
+    
     initSkills();
     initContactForm();
 
@@ -877,7 +958,8 @@
       }
     });
 
-    console.log('Portfolio initialized successfully! 🚀');
+    console.log('✅ Portfolio initialized successfully! 🚀');
+    console.log('📝 Check the console above for any initialization messages');
   }
 
   // Run when DOM is ready

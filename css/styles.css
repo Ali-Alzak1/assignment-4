@@ -860,6 +860,9 @@ html[data-theme="dark"] .difficulty-advanced {
 .project-links {
   margin-top: auto;
   padding-top: var(--spacing-sm);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
 }
 
 .project-link {
